@@ -1,4 +1,4 @@
-#### Evaluator can simply run testCachematrix.R to test cachematrix.R. Thanks.
+#### Evaluator can simply run ``` source("testCachematrix.R", echo = TRUE)``` to test cachematrix.R. Thanks.
 
 ### Introduction
 
