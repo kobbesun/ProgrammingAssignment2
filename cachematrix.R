@@ -20,6 +20,8 @@ makeCacheMatrix <- function(x = matrix()) {
                 }
         }
         
+        setMatrix(x)
+        
         # define get function that returns iMatrix
         getMatrix <- function() iMatrix
         
@@ -32,6 +34,18 @@ makeCacheMatrix <- function(x = matrix()) {
                         # assign x to iMatrixInverse
                         iMatrixInverse <<- i;
                 }
+        }
+        
+        inverse <- try(solve(iMatrix))
+        if (class(inverse) == "try-error") {
+                # if the stored matrix is unsolvable, notice the user.
+                message("Matrix can't be solved.")
+                # iMatrixInverse <<- NULL
+                setInverse(NULL)
+        } else {
+                # if stored matrix is solvalbe, solve it and assign the 
+                # inversed matrix to input parameter x
+                setInverse(inverse)
         }
         
         # define get function that returns iMatrixInverse
